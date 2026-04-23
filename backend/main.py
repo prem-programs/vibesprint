@@ -67,7 +67,11 @@ Respond ONLY with a raw JSON object using this exact schema (no markdown, no ext
   "the_roast": "<brutally honest, slightly humorous 2-sentence reality check>",
   "required_hours": <estimated realistic hours needed>,
   "adjusted_timeline": "<realistic timeframe, e.g. '6 Months'>",
-  "realistic_roadmap": [{{"week": "1-2", "focus": "..."}}]
+  "realistic_roadmap": [{{"week": "1-2", "focus": "..."}}],
+  "core_missing_skills": ["<skill 1>", "<skill 2>", "<skill 3>"],
+  "recommended_projects": [{{"title": "<Project Name>", "description": "<Brief 1-sentence description>"}}],
+  "top_barrier": "<the single biggest obstacle they face right now>",
+  "market_reality_check": "<brutally honest take on industry reality regarding their goal>"
 }}"""
 
     try:
@@ -126,7 +130,16 @@ Respond ONLY with a raw JSON object using this exact schema (no markdown, no ext
                     {"week": "1", "focus": "Open aistudio.google.com/app/apikey"},
                     {"week": "2", "focus": "Generate a fresh API key"},
                     {"week": "3", "focus": "Paste it into .env.local and restart uvicorn"}
-                ]
+                ],
+                "core_missing_skills": ["API Key Management", "Reading Error Logs", "Patience"],
+                "recommended_projects": [
+                    {
+                        "title": "Operation Fresh API Key",
+                        "description": "Navigate to Google AI Studio and generate a pristine, working API key to unblock your destiny."
+                    }
+                ],
+                "top_barrier": "You literally cannot make API calls.",
+                "market_reality_check": "In the real world, engineers actually need working credentials to build AI apps."
             }
 
         raise HTTPException(status_code=500, detail=error_msg)

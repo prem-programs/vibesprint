@@ -21,6 +21,10 @@ interface AnalysisResult {
   required_hours: number;
   adjusted_timeline: string;
   realistic_roadmap: RoadmapStep[];
+  core_missing_skills?: string[];
+  recommended_projects?: { title: string; description: string }[];
+  top_barrier?: string;
+  market_reality_check?: string;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -477,6 +481,84 @@ function Dashboard({ result, onReset }: { result: AnalysisResult; onReset: () =>
                 GitHub, LinkedIn, Twitter) achieve their goals <span className="text-indigo-300 font-semibold">2.4× faster</span> due to accountability and serendipitous opportunities.
               </p>
             </motion.div>
+          </div>
+        </div>
+
+        {/* ── Market Reality & Core Gaps ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          {/* Core Missing Skills */}
+          {result.core_missing_skills && result.core_missing_skills.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="glass rounded-3xl p-6 border border-indigo-500/15"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <Target className="w-5 h-5 text-indigo-400" />
+                <h2 className="text-lg font-bold text-white">Core Missing Skills</h2>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {result.core_missing_skills.map((skill, i) => (
+                  <span key={i} className="px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-medium">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+              {result.top_barrier && (
+                <div className="mt-5 p-4 rounded-2xl bg-orange-500/10 border border-orange-500/20">
+                  <div className="flex items-start gap-2 text-orange-200">
+                    <Shield className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-orange-400 mb-1">Top Barrier</p>
+                      <p className="text-sm leading-relaxed">{result.top_barrier}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          )}
+
+          {/* Recommended Projects & Market Reality */}
+          <div className="flex flex-col gap-6">
+            {result.recommended_projects && result.recommended_projects.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="glass rounded-3xl p-6 border border-violet-500/15"
+              >
+                <div className="flex items-center gap-2 mb-4">
+                  <Rocket className="w-5 h-5 text-violet-400" />
+                  <h2 className="text-lg font-bold text-white">Recommended Projects</h2>
+                </div>
+                <div className="space-y-4">
+                  {result.recommended_projects.map((proj, i) => (
+                    <div key={i} className="bg-slate-800/50 rounded-xl p-4 border border-slate-700/50">
+                      <p className="font-bold text-violet-300 mb-1">{proj.title}</p>
+                      <p className="text-sm text-slate-300 leading-relaxed">{proj.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {result.market_reality_check && (
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+                className="glass rounded-3xl p-6 border border-red-500/15 bg-gradient-to-br from-red-500/5 to-transparent"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <AlertTriangle className="w-5 h-5 text-red-500" />
+                  <h2 className="text-lg font-bold text-white">Market Reality</h2>
+                </div>
+                <p className="text-sm text-slate-300 leading-relaxed italic">
+                  "{result.market_reality_check}"
+                </p>
+              </motion.div>
+            )}
           </div>
         </div>
 
