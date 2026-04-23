@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Brain, ArrowLeft, ArrowRight, Zap, Loader2, RotateCcw, 
-  Activity, CheckCircle2, XCircle, AlertTriangle, Lightbulb 
+  Activity, CheckCircle2, XCircle, AlertTriangle, Lightbulb, Target 
 } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────

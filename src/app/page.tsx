@@ -7,7 +7,7 @@ import PillNav from "@/components/PillNav";
 import Aurora from "@/components/Aurora";
 import {
   Zap, Brain, Target, Sparkles, ArrowRight,
-  ChevronRight, Star, Users, TrendingUp, Lock
+  ChevronRight, Star, Users, TrendingUp, Lock, CircuitBoard
 } from "lucide-react";
 
 // ─── Animated counter ─────────────────────────────────────────────────────────
@@ -219,25 +219,25 @@ const FEATURES = [
     href: "/declutter",
     icon: Brain,
     label: "Feature 02",
-    tag: "Coming Soon",
+    tag: "Live",
     title: "Declutter Your Mind",
     description: "Brain dump everything overwhelming you. Our AI organises the chaos into clear priorities, surfaces what actually matters, and helps you offload the mental noise — guilt-free.",
     gradient: "from-cyan-500 to-teal-500",
     glowColor: "#06b6d4",
     accentColor: "#22d3ee",
-    comingSoon: true,
+    comingSoon: false,
   },
   {
     href: "/decisions",
     icon: Target,
     label: "Feature 03",
-    tag: "Coming Soon",
+    tag: "Live",
     title: "Better Decision Plan",
     description: "Stuck on a tough call? Describe your dilemma and get a structured decision framework with trade-off analysis, second-order consequences, and a clear recommendation backed by reasoning.",
     gradient: "from-rose-500 to-pink-600",
     glowColor: "#f43f5e",
     accentColor: "#fb7185",
-    comingSoon: true,
+    comingSoon: false,
   },
 ];
 
@@ -267,10 +267,13 @@ export default function HomePage() {
         className="relative z-50 flex items-center justify-between px-6 sm:px-10 py-5 max-w-7xl mx-auto"
       >
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
-            <Sparkles className="w-5 h-5 text-white" />
+          <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 border border-indigo-500/30 flex items-center justify-center shadow-[0_0_20px_rgba(79,70,229,0.3)]">
+            <Brain className="w-5 h-5 text-indigo-400 absolute" />
+            <CircuitBoard className="w-6 h-6 text-cyan-400 absolute opacity-70 mix-blend-screen" />
           </div>
-          <span className="font-black text-white text-lg tracking-tight">ThinkOS</span>
+          <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 text-2xl tracking-tighter">
+            ThinkOS
+          </span>
         </div>
 
         <div className="flex items-center justify-center relative z-[100]">
@@ -288,12 +291,6 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="flex items-center gap-2">
-          <span className="hidden sm:flex items-center gap-1.5 text-xs text-emerald-400 font-semibold bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full">
-            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-            1 Tool Live
-          </span>
-        </div>
       </motion.nav>
 
       {/* ── Hero ── */}
