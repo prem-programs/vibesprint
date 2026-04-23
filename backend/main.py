@@ -223,10 +223,11 @@ Limit your response to ONLY a raw JSON object matching exactly this schema (no m
             }
         raise HTTPException(status_code=500, detail=error_msg)
 
+
 @app.post("/api/decisions")
-async def decision_framework(
-    decision_1: str = Form(...),
-    decision_2: str = Form(...),
+async def better_decisions(
+    option1: str = Form(...),
+    option2: str = Form(...),
     context: str = Form(...)
 ):
     api_keys = []
@@ -240,38 +241,34 @@ async def decision_framework(
     if not api_keys:
         raise HTTPException(status_code=500, detail="No Gemini API keys found.")
 
-    if not decision_1 or not decision_2 or not context:
-        raise HTTPException(status_code=400, detail="Decision 1, Decision 2, and context are required.")
+    if not option1 or not option2 or not context:
+        raise HTTPException(status_code=400, detail="Options and context are required.")
 
-    prompt = f"""You are a brutally logical AI decision-making strategist.
-A user is stuck between two paths and has provided this context:
+    prompt = f"""You are a brutally logical, unbiased decision strategist.
+A user is stuck between two choices and needs absolute clarity.
 
-Context:
-\"\"\"
-{context}
-\"\"\"
+The dilemma context:
+"{context}"
 
-Option 1: {decision_1}
-Option 2: {decision_2}
+Option 1: "{option1}"
+Option 2: "{option2}"
 
-Provide a completely unbiased, highly structured analysis of these two options based on the context.
+Break down this decision ruthlessly. Identify hidden trade-offs, second-order consequences, and provide a clear, justified recommendation.
 Limit your response to ONLY a raw JSON object matching exactly this schema (no markdown formatting, no code blocks):
 {{
-  "summary": "<1-2 sentence brutal breakdown of the true underlying conflict>",
-  "option_1_analysis": {{
+  "option1_analysis": {{
     "pros": ["<Pro 1>", "<Pro 2>"],
     "cons": ["<Con 1>", "<Con 2>"],
-    "hidden_traps": ["<A non-obvious negative consequence>"],
-    "regret_score": <number 0-100 indicating likelihood of long-term regret if they choose this>
+    "hidden_risk": "<A non-obvious downside they probably haven't considered>"
   }},
-  "option_2_analysis": {{
+  "option2_analysis": {{
     "pros": ["<Pro 1>", "<Pro 2>"],
     "cons": ["<Con 1>", "<Con 2>"],
-    "hidden_traps": ["<A non-obvious negative consequence>"],
-    "regret_score": <number 0-100 indicating likelihood of long-term regret if they choose this>
+    "hidden_risk": "<A non-obvious downside they probably haven't considered>"
   }},
-  "second_order_consequences": ["<Consequence 1>", "<Consequence 2>"],
-  "recommendation": "<A clear, decisive final recommendation with brief reasoning>"
+  "second_order_consequences": ["<Consequence 1 if they do Option 1>", "<Consequence 2 if they do Option 2>"],
+  "regret_minimization": "<Which option will they regret LESS in 5 years and why?>",
+  "recommendation": "<A firm, unambiguous recommendation of what they should do based on the context>"
 }}"""
 
     try:
@@ -310,20 +307,18 @@ Limit your response to ONLY a raw JSON object matching exactly this schema (no m
         error_msg = str(e)
         if "expired" in error_msg.lower() or "quota" in error_msg.lower() or "429" in error_msg:
             return {
-                "summary": "You are stuck between two API errors, but the underlying conflict is a lack of valid credentials.",
-                "option_1_analysis": {
-                    "pros": ["It's free to try"],
-                    "cons": ["It doesn't work"],
-                    "hidden_traps": ["You might spend hours debugging"],
-                    "regret_score": 100
+                "option1_analysis": {
+                    "pros": ["It's an option"],
+                    "cons": ["Requires an API key"],
+                    "hidden_risk": "You might get rate limited."
                 },
-                "option_2_analysis": {
-                    "pros": ["Requires no thought"],
-                    "cons": ["You get no results"],
-                    "hidden_traps": ["The project stalls out"],
-                    "regret_score": 100
+                "option2_analysis": {
+                    "pros": ["It's another option"],
+                    "cons": ["Also requires an API key"],
+                    "hidden_risk": "Also rate limited."
                 },
-                "second_order_consequences": ["The app looks cool but does nothing.", "You lose trust in the AI layer."],
-                "recommendation": "MOCK DATA FALLBACK: Go get a new API key."
+                "second_order_consequences": ["Your API key is dead.", "You can't make decisions without AI."],
+                "regret_minimization": "You'll regret not refreshing your API key.",
+                "recommendation": "Fix your .env keys so the real AI can help you decide."
             }
         raise HTTPException(status_code=500, detail=error_msg)
