@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Perspective utility for 3D cards */
+.perspective-\[1200px\] {
+  perspective: 1200px;
+}
+
 :root {
   --background: #020617;
   --foreground: #f1f5f9;

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Reality Check — AI Career Audit Dashboard",
-  description: "Upload your resume, state your career goal, and get a brutally honest AI-powered audit with a full roadmap and realistic timeline.",
+  title: "ThinkOS — AI Tools for People Who Can Handle the Truth",
+  description: "Three brutal AI tools: Reality Check your career, Declutter your mind, and plan Better Decisions. No fluff, no filters.",
 };
 
 export default function RootLayout({
