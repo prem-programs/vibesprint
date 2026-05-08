@@ -7,8 +7,8 @@ import PyPDF2
 import io
 from dotenv import load_dotenv
 
-# Load .env.local dynamically from the project root
-load_dotenv(".env.local")
+# Load .env.local from the project root
+load_dotenv("../.env.local")
 
 app = FastAPI()
 

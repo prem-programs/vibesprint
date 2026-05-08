@@ -267,11 +267,13 @@ export default function HomePage() {
         className="relative z-50 flex items-center justify-between px-6 sm:px-10 py-5 max-w-7xl mx-auto"
       >
         <div className="flex items-center gap-3">
-          <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 border border-indigo-500/30 flex items-center justify-center shadow-[0_0_20px_rgba(79,70,229,0.3)]">
-            <Brain className="w-5 h-5 text-indigo-400 absolute" />
-            <CircuitBoard className="w-6 h-6 text-cyan-400 absolute opacity-70 mix-blend-screen" />
+          <div className="relative w-10 h-10 rounded-xl flex items-center justify-center"
+               style={{ background: "linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%)", boxShadow: "0 0 22px rgba(124,58,237,0.45), 0 0 8px rgba(6,182,212,0.3)" }}>
+            <Brain className="w-5 h-5 absolute" style={{ color: "#e0e7ff" }} />
+            <CircuitBoard className="w-6 h-6 absolute opacity-60" style={{ color: "#67e8f9", mixBlendMode: "screen" }} />
           </div>
-          <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 text-2xl tracking-tighter">
+          <span className="font-black text-2xl tracking-tighter"
+                style={{ background: "linear-gradient(90deg, #818cf8 0%, #a78bfa 40%, #22d3ee 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
             ThinkOS
           </span>
         </div>
@@ -293,10 +295,8 @@ export default function HomePage() {
 
       </motion.nav>
 
-      {/* ── Hero ── */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pt-12 pb-20 text-center">
-
-
+      {/* ── Hero (Above the fold) ── */}
+      <section className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 min-h-[calc(100vh-120px)] flex flex-col items-center justify-center text-center">
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
@@ -307,35 +307,28 @@ export default function HomePage() {
           <span className="text-white block">AI that's</span>
           <RotatingWord />
         </motion.h1>
+      </section>
 
+      {/* ── Features (Below the fold) ── */}
+      <section className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pb-24 text-center">
         {/* Sub */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mt-6 mb-12"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-12"
         >
           Three powerful AI tools to audit your career, declutter your mental bandwidth,
           and make smarter decisions — no fluff, no filters.
         </motion.p>
 
-
-        {/* ── Feature cards grid ── */}
+        {/* Feature cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left perspective-[1200px]">
           {FEATURES.map((f, i) => (
             <FeatureCard key={f.label} {...f} index={i} />
           ))}
         </div>
-
-        {/* Coming soon notice */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="text-slate-600 text-sm mt-8"
-        >
-          🔒 Declutter Your Mind & Better Decision Plan launching soon — building in public.
-        </motion.p>
       </section>
 
       {/* ── How it works ── */}
