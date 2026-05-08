@@ -270,7 +270,7 @@ export default function HomePage() {
           <div className="relative w-10 h-10 rounded-xl flex items-center justify-center"
                style={{ background: "linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%)", boxShadow: "0 0 22px rgba(124,58,237,0.45), 0 0 8px rgba(6,182,212,0.3)" }}>
             <Brain className="w-5 h-5 absolute" style={{ color: "#e0e7ff" }} />
-            <CircuitBoard className="w-6 h-6 absolute opacity-60" style={{ color: "#67e8f9", mixBlendMode: "screen" }} />
+        
           </div>
           <span className="font-black text-2xl tracking-tighter"
                 style={{ background: "linear-gradient(90deg, #818cf8 0%, #a78bfa 40%, #22d3ee 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>

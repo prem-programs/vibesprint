@@ -3,3 +3,4 @@ uvicorn
 google-genai
 PyPDF2
 python-dotenv
+python-multipart
