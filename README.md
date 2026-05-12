@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Delulubreaker
+> "Because delulu is not only solulu"
 
-## Getting Started
+Built during an intense 4-hour hackathon, Delulubreaker is designed to cut through the noise. The tech industry is full of sugar-coating, which often leads to idle brainstorming instead of actual progress. We built this app to force a shift toward active execution. 
 
-First, run the development server:
+No fluff. No generic motivation. Just a brutal, honest reality check so you can focus on hands-on problem-solving.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What does it do?
+Are you aiming for a Senior AI Engineer role with a resume that only features a generic to-do list app? Delulubreaker will tell you exactly where you stand.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+It requires two simple inputs:
+1. **Your Resume:** What you actually bring to the table.
+2. **Your Goal:** What you are trying to achieve.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**The Output:** An unfiltered reality check that highlights the exact gap between your current skills and your target.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
+* **Zero Sugar-Coating:** We prioritize your growth over your feelings. Expect brutally honest feedback.
+* **Clutter Clearing:** Stops you from overthinking by outlining exactly what you lack so you can get to work.
+* **Resume Parsing:** Analyzes your current experience and technical skills.
+* **Goal Matching:** Compares your resume against your target role to output your personalized "Delulu Score."
 
-## Learn More
+## How to Run Locally
+Getting it running is quick and straightforward.
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository:**
+  ```bash
+   git clone [https://github.com/prem-programs/Delulubreaker.git](https://github.com/prem-programs/Delulubreaker.git)
+   cd Delulubreaker
+  ```
+2. **Install Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. **Set up Environment Variables:**
+   Create a `.env` file in the root directory and add your API keys.
+   ```env
+   API_KEY=your_api_key_here
+   ```
+4. **Run the app:**
+     ```
+   python app.py
+      ```
+   ---
+   
+## Tech Stack
+* **Frontend:** React / Next.js / HTML & TailwindCSS
+* **Backend:** Node.js / Python (FastAPI/Flask)
+* **AI/Logic:** OpenAI API
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## The Motivation
+Sometimes, the best way to move forward is to know exactly where you stand. We built Delulubreaker because the modern job market requires self-awareness. By breaking the delusion, we help users quiet their minds, figure out exactly what skills they are missing, and start building what actually matters.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
+Feel free to open an issue or submit a pull request if you want to make the reality checks even harsher.
 
-## Deploy on Vercel
+## License
+MIT License - Do whatever you want with it, just don't be delulu.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Did you survive your reality check? Star this repo if Delulubreaker humbled you.*
+   
